@@ -101,13 +101,13 @@ pytest tests/test_nodes_mocked.py -v
 pytest tests/ --cov=. --cov-report=html
 ```
 
-Más informacion en [**docs/ARCHITECTURE.md**](docs/ARCHITECTURE.md) -> Sección Tests
+Más informacion en [**ARCHITECTURE.md**](ARCHITECTURE.md) -> Sección Tests
 
 ## 🏗️ Arquitectura
 
 Para entender cómo funciona el sistema internamente (nodos, flujo del grafo, decisiones de diseño), consulta:
 
-📚 [**docs/ARCHITECTURE.md**](docs/ARCHITECTURE.md) - Documentación completa de arquitectura
+📚 [**ARCHITECTURE.md**](ARCHITECTURE.md) - Documentación completa de arquitectura
 
 ## 🔧 Tecnologías
 
