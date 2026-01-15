@@ -1,0 +1,16 @@
+{
+  "products": [
+    {"id": "prod_001", "name": "Camiseta Básica Azul", "price": 19.99, "category": "ropa", "description": "Camiseta de algodón 100%", "stock": 50},
+    {"id": "prod_002", "name": "Pantalón Vaquero", "price": 49.99, "category": "ropa", "description": "Pantalón vaquero clásico", "stock": 35},
+    {"id": "prod_003", "name": "Zapatillas Running", "price": 79.99, "category": "deportes", "description": "Zapatillas deportivas", "stock": 25},
+    {"id": "prod_004", "name": "Auriculares Bluetooth", "price": 89.99, "category": "electrónica", "description": "Auriculares inalámbricos", "stock": 40},
+    {"id": "prod_005", "name": "Mochila Portátil", "price": 34.99, "category": "electrónica", "description": "Mochila para portátiles 15.6\"", "stock": 60},
+    {"id": "prod_006", "name": "Lámpara LED Escritorio", "price": 24.99, "category": "hogar", "description": "Lámpara LED regulable", "stock": 45},
+    {"id": "prod_007", "name": "Botella Térmica", "price": 19.99, "category": "deportes", "description": "Botella térmica de acero", "stock": 70},
+    {"id": "prod_008", "name": "Teclado Mecánico", "price": 119.99, "category": "electrónica", "description": "Teclado mecánico RGB", "stock": 20},
+    {"id": "prod_009", "name": "Cuaderno A4", "price": 7.99, "category": "oficina", "description": "Cuaderno de 200 páginas", "stock": 100},
+    {"id": "prod_010", "name": "Mouse Inalámbrico", "price": 29.99, "category": "electrónica", "description": "Mouse ergonómico", "stock": 55},
+    {"id": "prod_011", "name": "Termo Café", "price": 14.99, "category": "hogar", "description": "Termo para café de 500ml", "stock": 80},
+    {"id": "prod_012", "name": "Gorra Deportiva", "price": 12.99, "category": "deportes", "description": "Gorra con visera ajustable", "stock": 90}
+  ]
+}

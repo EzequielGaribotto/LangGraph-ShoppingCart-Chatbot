@@ -1,0 +1,32 @@
+# ============================================
+# DEPENDENCIAS CORE (necesarias para ejecutar)
+# ============================================
+
+# LangGraph & LangChain - Framework conversacional
+langgraph>=0.2.0              # Orquestación del grafo de estados
+langchain>=0.3.0              # Framework base para LLMs
+langchain-core>=0.3.0         # Core de LangChain
+langchain-openai>=0.2.0       # Integración con OpenAI
+langchain-anthropic>=0.2.0    # Integración con Claude/Anthropic
+langchain-google-genai>=2.0.0 # Integración con Google Gemini
+
+# Validación de datos - NECESARIO para models/
+pydantic>=2.0.0               # Validación y modelado de datos (Product, Cart, Order)
+
+# Configuración - Variables de entorno
+python-dotenv>=1.0.0          # Cargar API keys desde .env
+
+# ============================================
+# DEPENDENCIAS DE DESARROLLO (solo para tests/linting)
+# ============================================
+
+# Testing
+pytest>=7.4.0                 # Framework de testing
+pytest-cov>=4.1.0            # Coverage de tests
+pytest-asyncio>=0.21.0       # Tests asíncronos
+
+# Linting y formateo
+black>=23.0.0                # Formateo de código
+flake8>=6.1.0                # Linting
+isort>=5.12.0                # Ordenar imports
+mypy>=1.5.0                  # Type checking

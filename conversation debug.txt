@@ -1,0 +1,215 @@
+(.venv) PS C:\Dev\github\shopping_cart_chatbot_LangGraph> python app/main.py --debug                           
+🐛 Debug mode enabled
+
+======================================================================
+🛒 CHATBOT DE E-COMMERCE
+======================================================================
+Escribe 'salir' o 'exit' para terminar
+
+2026-01-15 14:14:31,768 - graph.nodes - INFO - 🔷 Executing detect_intent_node
+2026-01-15 14:14:31,769 - graph.nodes - INFO - ✅ detect_intent_node completed in 0.00s
+🤖 Bot: 👋 **¡Bienvenido a la tienda online!**
+
+Puedo ayudarte a:
+📦 Ver productos: 'Muéstrame los productos'
+➕ Añadir al carrito: 'Añade 2 Camiseta Básica'
+🛒 Ver carrito: 'Qué llevo en el carrito'
+💳 Comprar: 'Quiero finalizar la compra'
+👋 Salir: 'Salir'
+
+¿Qué te gustaría hacer?
+
+👤 Tú: ver productos
+2026-01-15 14:14:35,579 - graph.nodes - INFO - 🔷 Executing detect_intent_node
+2026-01-15 14:14:35,580 - graph.nodes - INFO - 🔧 Initializing LLM...
+2026-01-15 14:14:41,022 - graph.nodes - INFO - ✅ LLM initialized successfully
+2026-01-15 14:14:41,022 - graph.nodes - DEBUG - 💬 Detecting intent for: 'ver productos...'
+2026-01-15 14:14:41,022 - graph.nodes - DEBUG - 🤖 Calling LLM for intent detection...
+2026-01-15 14:14:41,033 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-01-15 14:14:41,035 - httpcore.connection - DEBUG - connect_tcp.started host='generativelanguage.googleapis.com' port=443 local_address=None timeout=None socket_options=None
+2026-01-15 14:14:41,074 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001ABF4012720>
+2026-01-15 14:14:41,074 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001ABF2F711D0> server_hostname='generativelanguage.googleapis.com' timeout=None
+2026-01-15 14:14:41,116 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001ABF2E734D0>
+2026-01-15 14:14:41,116 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2026-01-15 14:14:41,117 - httpcore.http11 - DEBUG - send_request_headers.complete
+2026-01-15 14:14:41,117 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>      
+2026-01-15 14:14:41,118 - httpcore.http11 - DEBUG - send_request_body.complete
+2026-01-15 14:14:41,118 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2026-01-15 14:14:41,473 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=UTF-8'), (b'Vary', b'Origin'), (b'Vary', b'X-Origin'), (b'Vary', b'Referer'), (b'Content-Encoding', b'gzip'), (b'Date', b'Thu, 15 Jan 2026 13:14:40 GMT'), (b'Server', b'scaffolding on HTTPServer2'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'X-Content-Type-Options', b'nosniff'), (b'Server-Timing', b'gfet4t7; dur=341'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
+2026-01-15 14:14:41,475 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-01-15 14:14:41,475 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>  
+2026-01-15 14:14:41,478 - httpcore.http11 - DEBUG - receive_response_body.complete
+2026-01-15 14:14:41,478 - httpcore.http11 - DEBUG - response_closed.started
+2026-01-15 14:14:41,479 - httpcore.http11 - DEBUG - response_closed.complete
+2026-01-15 14:14:41,482 - graph.nodes - DEBUG - 🎯 Detected intent: BROWSE
+2026-01-15 14:14:41,482 - graph.nodes - INFO - ✅ Intent: browse
+2026-01-15 14:14:41,483 - graph.nodes - INFO - ✅ detect_intent_node completed in 5.90s
+2026-01-15 14:14:41,484 - graph.nodes - INFO - 🔷 Executing browse_products_node
+✅ Catálogo cargado: 12 productos
+2026-01-15 14:14:41,487 - graph.nodes - INFO - ✅ browse_products_node completed in 0.00s
+
+🤖 Bot: 📦 **Productos disponibles:**
+
+1. **Camiseta Básica Azul** - $19.99 (ropa) - Stock: 50
+2. **Pantalón Vaquero** - $49.99 (ropa) - Stock: 35
+3. **Zapatillas Running** - $79.99 (deportes) - Stock: 25
+4. **Auriculares Bluetooth** - $89.99 (electrónica) - Stock: 40
+5. **Mochila Portátil** - $34.99 (electrónica) - Stock: 60
+6. **Lámpara LED Escritorio** - $24.99 (hogar) - Stock: 45
+7. **Botella Térmica** - $19.99 (deportes) - Stock: 70
+8. **Teclado Mecánico** - $119.99 (electrónica) - Stock: 20
+9. **Cuaderno A4** - $7.99 (oficina) - Stock: 100
+10. **Mouse Inalámbrico** - $29.99 (electrónica) - Stock: 55
+11. **Termo Café** - $14.99 (hogar) - Stock: 80
+12. **Gorra Deportiva** - $12.99 (deportes) - Stock: 90
+
+💡 Puedes decir: 'Añade 2 Camiseta Básica Azul' o 'Quiero producto 1'
+
+👤 Tú: quiero 2 zapatillas
+2026-01-15 14:15:04,204 - graph.nodes - INFO - 🔷 Executing detect_intent_node
+2026-01-15 14:15:04,205 - graph.nodes - DEBUG - 💬 Detecting intent for: 'quiero 2 zapatillas...'
+2026-01-15 14:15:04,205 - graph.nodes - DEBUG - 🤖 Calling LLM for intent detection...
+2026-01-15 14:15:04,207 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-01-15 14:15:04,209 - httpcore.connection - DEBUG - close.started
+2026-01-15 14:15:04,209 - httpcore.connection - DEBUG - close.complete
+2026-01-15 14:15:04,210 - httpcore.connection - DEBUG - connect_tcp.started host='generativelanguage.googleapis.com' port=443 local_address=None timeout=None socket_options=None
+2026-01-15 14:15:04,223 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001ABF4013B60>
+2026-01-15 14:15:04,223 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001ABF2F711D0> server_hostname='generativelanguage.googleapis.com' timeout=None
+2026-01-15 14:15:04,282 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001ABF4013A40>
+2026-01-15 14:15:04,282 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2026-01-15 14:15:04,283 - httpcore.http11 - DEBUG - send_request_headers.complete
+2026-01-15 14:15:04,283 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>      
+2026-01-15 14:15:04,283 - httpcore.http11 - DEBUG - send_request_body.complete
+2026-01-15 14:15:04,283 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2026-01-15 14:15:04,596 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=UTF-8'), (b'Vary', b'Origin'), (b'Vary', b'X-Origin'), (b'Vary', b'Referer'), (b'Content-Encoding', b'gzip'), (b'Date', b'Thu, 15 Jan 2026 13:15:03 GMT'), (b'Server', b'scaffolding on HTTPServer2'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'X-Content-Type-Options', b'nosniff'), (b'Server-Timing', b'gfet4t7; dur=297'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
+2026-01-15 14:15:04,597 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-01-15 14:15:04,598 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>  
+2026-01-15 14:15:04,598 - httpcore.http11 - DEBUG - receive_response_body.complete
+2026-01-15 14:15:04,598 - httpcore.http11 - DEBUG - response_closed.started
+2026-01-15 14:15:04,599 - httpcore.http11 - DEBUG - response_closed.complete
+2026-01-15 14:15:04,600 - graph.nodes - DEBUG - 🎯 Detected intent: MANAGE_CART
+2026-01-15 14:15:04,600 - graph.nodes - INFO - ✅ Intent: manage_cart
+2026-01-15 14:15:04,600 - graph.nodes - INFO - ✅ detect_intent_node completed in 0.39s
+2026-01-15 14:15:04,601 - graph.nodes - INFO - 🔷 Executing manage_cart_node
+2026-01-15 14:15:04,603 - graph.nodes - DEBUG - 🔍 Found 5 candidate products
+2026-01-15 14:15:04,603 - graph.nodes - DEBUG - 🤖 Calling LLM for cart entity extraction...
+2026-01-15 14:15:04,603 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-01-15 14:15:04,605 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>   
+2026-01-15 14:15:04,605 - httpcore.http11 - DEBUG - send_request_headers.complete
+2026-01-15 14:15:04,605 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>      
+2026-01-15 14:15:04,607 - httpcore.http11 - DEBUG - send_request_body.complete
+2026-01-15 14:15:04,607 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2026-01-15 14:15:06,619 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=UTF-8'), (b'Vary', b'Origin'), (b'Vary', b'X-Origin'), (b'Vary', b'Referer'), (b'Content-Encoding', b'gzip'), (b'Date', b'Thu, 15 Jan 2026 13:15:05 GMT'), (b'Server', b'scaffolding on HTTPServer2'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'X-Content-Type-Options', b'nosniff'), (b'Server-Timing', b'gfet4t7; dur=1983'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
+2026-01-15 14:15:06,620 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-01-15 14:15:06,620 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>  
+2026-01-15 14:15:06,622 - httpcore.http11 - DEBUG - receive_response_body.complete
+2026-01-15 14:15:06,622 - httpcore.http11 - DEBUG - response_closed.started
+2026-01-15 14:15:06,623 - httpcore.http11 - DEBUG - response_closed.complete
+2026-01-15 14:15:06,625 - graph.nodes - DEBUG - 📝 Response received: ```json
+{
+  "action": "add",
+  "quantity": 2,
+  "product_reference": {
+    "type": "name",
+    "valu...
+2026-01-15 14:15:06,625 - graph.nodes - INFO - ✅ manage_cart_node completed in 2.02s
+
+🤖 Bot: ✅ 2x Zapatillas Running añadido al carrito.
+
+👤 Tú: ver mi carrito
+2026-01-15 14:15:29,183 - graph.nodes - INFO - 🔷 Executing detect_intent_node
+2026-01-15 14:15:29,184 - graph.nodes - DEBUG - 💬 Detecting intent for: 'ver mi carrito...'
+2026-01-15 14:15:29,184 - graph.nodes - DEBUG - 🤖 Calling LLM for intent detection...
+2026-01-15 14:15:29,186 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-01-15 14:15:29,188 - httpcore.connection - DEBUG - close.started
+2026-01-15 14:15:29,189 - httpcore.connection - DEBUG - close.complete
+2026-01-15 14:15:29,189 - httpcore.connection - DEBUG - connect_tcp.started host='generativelanguage.googleapis.com' port=443 local_address=None timeout=None socket_options=None
+2026-01-15 14:15:29,211 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001ABF4044980>
+2026-01-15 14:15:29,211 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001ABF2F711D0> server_hostname='generativelanguage.googleapis.com' timeout=None
+2026-01-15 14:15:29,254 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001ABF4044D70>
+2026-01-15 14:15:29,254 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2026-01-15 14:15:29,255 - httpcore.http11 - DEBUG - send_request_headers.complete
+2026-01-15 14:15:29,255 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>      
+2026-01-15 14:15:29,255 - httpcore.http11 - DEBUG - send_request_body.complete
+2026-01-15 14:15:29,257 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2026-01-15 14:15:29,659 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=UTF-8'), (b'Vary', b'Origin'), (b'Vary', b'X-Origin'), (b'Vary', b'Referer'), (b'Content-Encoding', b'gzip'), (b'Date', b'Thu, 15 Jan 2026 13:15:29 GMT'), (b'Server', b'scaffolding on HTTPServer2'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'X-Content-Type-Options', b'nosniff'), (b'Server-Timing', b'gfet4t7; dur=385'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
+2026-01-15 14:15:29,660 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-01-15 14:15:29,660 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>  
+2026-01-15 14:15:29,661 - httpcore.http11 - DEBUG - receive_response_body.complete
+2026-01-15 14:15:29,661 - httpcore.http11 - DEBUG - response_closed.started
+2026-01-15 14:15:29,661 - httpcore.http11 - DEBUG - response_closed.complete
+2026-01-15 14:15:29,663 - graph.nodes - DEBUG - 🎯 Detected intent: VIEW_CART
+2026-01-15 14:15:29,663 - graph.nodes - INFO - ✅ Intent: view_cart
+2026-01-15 14:15:29,663 - graph.nodes - INFO - ✅ detect_intent_node completed in 0.48s
+2026-01-15 14:15:29,664 - graph.nodes - INFO - 🔷 Executing view_cart_node
+2026-01-15 14:15:29,664 - graph.nodes - INFO - ✅ view_cart_node completed in 0.00s
+
+🤖 Bot: 🛒 **Tu carrito:**
+
+- 2x Zapatillas Running - $159.98
+
+**Total: $159.98**
+
+💡 ¿Quieres finalizar la compra?
+
+👤 Tú: finalizar
+2026-01-15 14:17:17,595 - graph.nodes - INFO - 🔷 Executing detect_intent_node
+2026-01-15 14:17:17,595 - graph.nodes - DEBUG - 💬 Detecting intent for: 'finalizar...'
+2026-01-15 14:17:17,597 - graph.nodes - DEBUG - 🤖 Calling LLM for intent detection...
+2026-01-15 14:17:17,598 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2026-01-15 14:17:17,599 - httpcore.connection - DEBUG - close.started
+2026-01-15 14:17:17,600 - httpcore.connection - DEBUG - close.complete
+2026-01-15 14:17:17,600 - httpcore.connection - DEBUG - connect_tcp.started host='generativelanguage.googleapis.com' port=443 local_address=None timeout=None socket_options=None
+2026-01-15 14:17:17,613 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001ABF4044980>
+2026-01-15 14:17:17,614 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001ABF2F711D0> server_hostname='generativelanguage.googleapis.com' timeout=None
+2026-01-15 14:17:17,652 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x000001ABF4044BC0>
+2026-01-15 14:17:17,652 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
+2026-01-15 14:17:17,653 - httpcore.http11 - DEBUG - send_request_headers.complete
+2026-01-15 14:17:17,653 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>      
+2026-01-15 14:17:17,653 - httpcore.http11 - DEBUG - send_request_body.complete
+2026-01-15 14:17:17,654 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
+2026-01-15 14:17:19,190 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=UTF-8'), (b'Vary', b'Origin'), (b'Vary', b'X-Origin'), (b'Vary', b'Referer'), (b'Content-Encoding', b'gzip'), (b'Date', b'Thu, 15 Jan 2026 13:17:18 GMT'), (b'Server', b'scaffolding on HTTPServer2'), (b'X-XSS-Protection', b'0'), (b'X-Frame-Options', b'SAMEORIGIN'), (b'X-Content-Type-Options', b'nosniff'), (b'Server-Timing', b'gfet4t7; dur=1522'), (b'Alt-Svc', b'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'), (b'Transfer-Encoding', b'chunked')])
+2026-01-15 14:17:19,191 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-01-15 14:17:19,191 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>  
+2026-01-15 14:17:19,192 - httpcore.http11 - DEBUG - receive_response_body.complete
+2026-01-15 14:17:19,193 - httpcore.http11 - DEBUG - response_closed.started
+2026-01-15 14:17:19,193 - httpcore.http11 - DEBUG - response_closed.complete
+2026-01-15 14:17:19,195 - graph.nodes - DEBUG - 🎯 Detected intent: CHECKOUT
+2026-01-15 14:17:19,196 - graph.nodes - INFO - ✅ Intent: checkout
+2026-01-15 14:17:19,196 - graph.nodes - INFO - ✅ detect_intent_node completed in 1.60s
+2026-01-15 14:17:19,197 - graph.nodes - INFO - 🔷 Executing checkout_node
+2026-01-15 14:17:19,197 - graph.nodes - INFO - ✅ checkout_node completed in 0.00s
+
+🤖 Bot: 📝 Para completar la compra necesito tus datos.
+¿Cuál es tu nombre?
+
+👤 Tú: Ezequiel
+2026-01-15 14:17:23,776 - graph.nodes - INFO - 🔷 Executing detect_intent_node
+2026-01-15 14:17:23,776 - graph.nodes - INFO - ✅ detect_intent_node completed in 0.00s
+2026-01-15 14:17:23,777 - graph.nodes - INFO - 🔷 Executing checkout_node
+2026-01-15 14:17:23,777 - graph.nodes - INFO - ✅ checkout_node completed in 0.00s
+
+🤖 Bot: ✅ Perfecto. ¿En qué ciudad?
+
+👤 Tú: Barcelona
+2026-01-15 14:17:26,507 - graph.nodes - INFO - 🔷 Executing detect_intent_node
+2026-01-15 14:17:26,508 - graph.nodes - INFO - ✅ detect_intent_node completed in 0.00s
+2026-01-15 14:17:26,509 - graph.nodes - INFO - 🔷 Executing checkout_node
+2026-01-15 14:17:26,511 - graph.nodes - INFO - ✅ checkout_node completed in 0.00s
+
+🤖 Bot: ✅ **¡Pedido confirmado!**
+
+📦 **Orden #ORD-20260115-141726-fbfe40**
+👤 Cliente: Ezequiel
+📍 Ciudad: Barcelona
+
+**Productos:**
+- 2x Zapatillas Running - $159.98
+
+💰 **Total: $159.98**
+
+¡Gracias por tu compra! 🎉
+
+👤 Tú: salir
+
+¡Hasta luego! 👋
