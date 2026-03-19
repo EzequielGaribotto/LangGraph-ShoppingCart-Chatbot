@@ -24,8 +24,8 @@ IMPORTANTE - RESPUESTAS CONTEXTUALES:
 
 EJEMPLOS:
 Bot: "¿Quieres finalizar la compra?" → Usuario: "si" → CHECKOUT
-Bot: "**Total: $159.98** 💡 ¿Quieres finalizar la compra?" → Usuario: "ok" → CHECKOUT
-Bot: "**Total: $159.98** 💡 ¿Quieres finalizar la compra?" → Usuario: "no" → UNKNOWN
+Bot: "Total: $159.98 💡 ¿Quieres finalizar la compra?" → Usuario: "ok" → CHECKOUT
+Bot: "Total: $159.98 💡 ¿Quieres finalizar la compra?" → Usuario: "no" → UNKNOWN
 Usuario: "quiero comprar" (sin contexto previo) → CHECKOUT
 
 Responde SOLO con el nombre de la intención. Sin explicaciones."""

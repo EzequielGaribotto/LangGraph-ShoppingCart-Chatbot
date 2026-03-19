@@ -138,7 +138,7 @@ def detect_intent_node(state: ConversationState) -> ConversationState:
 def _show_welcome_message(state: ConversationState) -> ConversationState:
     """Agrega mensaje de bienvenida al estado."""
     welcome_msg = (
-        "👋 **¡Bienvenido a la tienda online!**\n\n"
+        "👋 ¡Bienvenido a la tienda online!\n\n"
         "Puedo ayudarte a:\n"
         "📦 Ver productos: 'Muéstrame los productos'\n"
         "➕ Añadir al carrito: 'Añade 2 Camiseta Básica'\n"
@@ -192,9 +192,9 @@ def browse_products_node(state: ConversationState) -> ConversationState:
     ]
     
     # Formatear respuesta
-    response = "📦 **Productos disponibles:**\n\n"
+    response = "📦 Productos disponibles:\n\n"
     for i, p in enumerate(products, 1):
-        response += f"{i}. **{p.name}** - ${p.price} ({p.category}) - Stock: {p.stock}\n"
+        response += f"{i}. {p.name} - ${p.price} ({p.category}) - Stock: {p.stock}\n"
     
     response += "\n💡 Puedes decir: 'Añade 2 Camiseta Básica Azul' o 'Quiero producto 1'"
     
@@ -427,10 +427,10 @@ def view_cart_node(state: ConversationState) -> ConversationState:
     if cart.is_empty():
         response = "🛒 Tu carrito está vacío.\n\n💡 Puedes ver productos con: 'Muéstrame los productos'"
     else:
-        response = "🛒 **Tu carrito:**\n\n"
+        response = "🛒 Tu carrito:\n\n"
         for item in cart.items.values():
             response += f"- {item.quantity}x {item.product.name} - ${item.subtotal:.2f}\n"
-        response += f"\n**Total: ${cart.get_total():.2f}**"
+        response += f"\nTotal: ${cart.get_total():.2f}"
         response += "\n\n💡 ¿Quieres finalizar la compra?"
     
     state["messages"] = state["messages"] + [AIMessage(content=response)]
@@ -516,14 +516,14 @@ def _complete_order(state: ConversationState, city: str) -> ConversationState:
 
 def _format_order_confirmation(order: Order) -> str:
     """Formatea mensaje de confirmación de orden."""
-    response = f"✅ **¡Pedido confirmado!**\n\n"
-    response += f"📦 **Orden #{order.order_id}**\n"
+    response = f"✅ ¡Pedido confirmado!\n\n"
+    response += f"📦 Orden #{order.order_id}\n"
     response += f"👤 Cliente: {order.customer_name}\n"
     response += f"📍 Ciudad: {order.customer_city}\n\n"
-    response += "**Productos:**\n"
+    response += "Productos:\n"
     for item in order.cart.items.values():
         response += f"- {item.quantity}x {item.product.name} - ${item.subtotal:.2f}\n"
-    response += f"\n💰 **Total: ${order.total:.2f}**\n\n"
+    response += f"\n💰 Total: ${order.total:.2f}\n\n"
     response += "¡Gracias por tu compra! 🎉"
     return response
 
