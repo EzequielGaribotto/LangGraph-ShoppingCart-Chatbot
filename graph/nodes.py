@@ -111,20 +111,19 @@ def detect_intent_node(state: ConversationState) -> ConversationState:
     # Usar LLM para detección de intención
     try:
         llm = get_llm()
-        logger.debug(f"💬 Detecting intent for: '{user_message[:50]}...'")
+        logger.info(f"💬 Detecting intent for: '{user_message[:50]}...'")
         
         context = _build_context(state)
         messages = create_intent_detection_messages(user_message, context)
         
-        logger.debug("🤖 Calling LLM for intent detection...")
+        logger.info("🤖 Calling LLM for intent detection...")
         response = llm.invoke(messages)
         intent_str = response.content.strip().upper()
-        logger.debug(f"🎯 Detected intent: {intent_str}")
+        logger.info(f"🎯 Detected intent: {intent_str}")
         
         try:
             intent = UserIntent(intent_str.lower())
             state["current_intent"] = intent
-            logger.info(f"✅ Intent: {intent.value}")
         except ValueError:
             state["current_intent"] = UserIntent.UNKNOWN
             
@@ -462,57 +461,100 @@ def checkout_node(state: ConversationState) -> ConversationState:
 
 def _collect_customer_name(state: ConversationState, user_message: str) -> ConversationState:
     """Recolecta nombre del cliente."""
-    # Si el usuario solo dijo palabras clave de "checkout", pedir nombre
-    if any(word in user_message.lower() for word in ["comprar", "finalizar", "checkout", "pagar"]):
+
+    # 🧩 Turno 1: preguntar
+    if not state.get("asked_name"):
+        state["asked_name"] = True
         response = "📝 Para completar la compra necesito tus datos.\n¿Cuál es tu nombre?"
         state["messages"] = state["messages"] + [AIMessage(content=response)]
+        return state
+
+    # 🧩 Turno 2: procesar respuesta
+    name = _extract_name_from_message(user_message)
+
+    if name:
+        state["customer_name"] = name
+        state["asked_name"] = False  # 🔧 reset importante
+        response = f"✅ Perfecto. ${name}, ahora necesito tu ciudad para el envío."
     else:
-        # Parsear nombre del mensaje
-        name = _extract_name_from_message(user_message)
-        if name:
-            state["customer_name"] = name
-            response = "✅ Perfecto. ¿En qué ciudad?"
-        else:
-            response = "⚠️ No entendí tu nombre. ¿Cuál es tu nombre?"
-        state["messages"] = state["messages"] + [AIMessage(content=response)]
-    
+        response = "⚠️ No entendí tu nombre. Escribe solo tu nombre (ej: Juan)."
+
+    state["messages"] = state["messages"] + [AIMessage(content=response)]
     state["stage"] = ConversationStage.CHECKOUT
     return state
 
 
 def _extract_name_from_message(message: str) -> Optional[str]:
-    """Extrae nombre del mensaje del usuario, removiendo prefijos comunes."""
-    name = message.strip()
+    name = message.strip().lower()
+
     for prefix in ["mi nombre es", "me llamo", "soy", "mi nombre:"]:
-        if name.lower().startswith(prefix):
+        if name.startswith(prefix):
             name = name[len(prefix):].strip()
             break
-    return name if name else None
+
+    # Validación: solo letras, longitud razonable
+    if re.fullmatch(r"[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{2,30}", name):
+        return name.title()
+
+    return None
 
 
-def _complete_order(state: ConversationState, city: str) -> ConversationState:
-    """Completa la orden con información de ciudad."""
-    state["customer_city"] = city.strip()
-    
-    # Crear orden
+def _complete_order(state: ConversationState, user_message: str) -> ConversationState:
+    """Recolecta ciudad y completa la orden."""
+
+    # 🧩 Turno 1: preguntar ciudad
+    if not state.get("asked_city"):
+        state["asked_city"] = True
+        response = "📍 ¿En qué ciudad te encuentras?"
+        state["messages"] = state["messages"] + [AIMessage(content=response)]
+        return state
+
+    # 🧩 Turno 2: procesar respuesta
+    city = _extract_city_from_message(user_message)
+
+    if not city:
+        response = "⚠️ No entendí la ciudad. Escribe solo el nombre (ej: Barcelona)."
+        state["messages"] = state["messages"] + [AIMessage(content=response)]
+        return state
+
+    # ✅ Guardar ciudad
+    state["customer_city"] = city
+    state["asked_city"] = False  # reset importante
+
+    # 🧾 Crear orden
     order = Order.create_from_cart(
         cart=state["cart"],
         customer_name=state["customer_name"],
         customer_city=state["customer_city"]
     )
     state["order"] = order
-    
-    # Generar mensaje de confirmación
+
+    # 🧾 Generar confirmación
     response = _format_order_confirmation(order)
-    
-    # Limpiar carrito después de compra exitosa
+
+    # 🧹 Limpiar estado post-compra
     state["cart"].clear()
-    
+    state["customer_name"] = None
+    state["customer_city"] = None
+    state["asked_name"] = False
+    state["asked_city"] = False
+
+    # 📤 Respuesta final
     state["messages"] = state["messages"] + [AIMessage(content=response)]
     state["stage"] = ConversationStage.COMPLETED
-    
+
     return state
 
+def _extract_city_from_message(message: str) -> Optional[str]:
+    city = message.strip()
+
+    if len(city) < 2:
+        return None
+
+    if any(char.isdigit() for char in city):
+        return None
+
+    return city.title()
 
 def _format_order_confirmation(order: Order) -> str:
     """Formatea mensaje de confirmación de orden."""

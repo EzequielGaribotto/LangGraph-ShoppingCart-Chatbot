@@ -60,6 +60,8 @@ class ConversationState(TypedDict):
     customer_city: Optional[str]
     order: Optional[Order]
     session_id: str
+    asked_name: bool
+    asked_city: bool
 
 
 def create_initial_state(session_id: Optional[str] = None) -> ConversationState:
